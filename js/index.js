@@ -15,7 +15,7 @@ Estructuras de datos recomendadas
 * Clientes que pagaron el monto mayor
 * Clientes que sólo llevaron 1 artículo
 
-Ejemplos de requisitos
+**Ejemplos de requisitos defensa**
 * Clientes con mayor cnArticulos
 * Info de factura dada
 * Monto ingresado de facturas con 2 artículos*/
@@ -39,10 +39,43 @@ Dt_ventas.forEach((venta) =>
     )    
   );
 
+  //Agregacion y eliminacion de las ventas
+let agregarVenta = (tienda) => {
+    let cliente = prompt("Ingrese el cliente:");
+    let factura = Number(prompt("Ingrese la factura:"));
+    let costo = Number(prompt("Ingrese el costo:"));
+    let cnArticulos = Number(prompt("Ingrese la cantidad de artículos:"));
+    let venta = new Cl_venta(cliente, factura, costo, cnArticulos);
+    tienda.agregarVenta(venta);
+    alert("Venta agregada");
+  };
 
+let eliminarVenta = (tienda) => {
+    let factura = Number(prompt("Ingrese la factura a eliminar:"));
+    if (tienda.eliminarVenta(factura)) {
+      alert("Venta eliminada");
+    }
+    else {
+      alert("Venta no encontrada");
+    }
+  };
 
+// Demás metodos para mostrar
 
-
+let quienesMontoMayor = (tienda) => {
+    let ventas = tienda.montoMayor()
+    salida.innerHTML = `Clientes que pagaron el monto mayor: `
+    ventas.forEach((venta) => { 
+    salida.innerHTML += `<br>Nombre: ${venta.cliente}; Factura: ${venta.factura}; Monto: ${venta.montoPedido}`;
+  });
+}
+let quienesllevaronSoloUno = (tienda) => {
+    let ventas = tienda.quienesllevaronSoloUno()
+    salida.innerHTML = `Clientes que solo llevaron 1 articulo: `
+    ventas.forEach((venta) => { 
+    salida.innerHTML += `<br>Nombre: ${venta.cliente}; Factura: ${venta.factura}; Articulos: ${venta.cnArticulos}`;
+  });
+}
 
 //Creación de las Salidas
 let salida= document.getElementById("salida");

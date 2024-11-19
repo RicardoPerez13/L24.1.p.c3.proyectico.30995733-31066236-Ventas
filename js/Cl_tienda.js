@@ -13,17 +13,20 @@ export default class Cl_tienda {
         this._porcIncremento = +porcIncremento;}
     get porcIncremento() {
         return this.porcIncremento;}
-/**/set acum_monto(acum_monto){
-        this.acum_monto = acum_monto}
-    get acum_monto (){
-        return this._acum_monto}
-        // Metodos Cl_tienda
+        // ***Metodos Cl_tienda***
+
     agregarVenta(venta) {
         this.ventas.push(venta);
-    }
-    montoPedido(venta) {
-        return venta.costo * (1 + this.porcIncremento / 100);
-    }
+    };
+
+    eliminarVenta(factura) {
+        let facturaVenta = -1;
+        for (let i = 0; i < this.ventas.length; i++)
+          if (this.ventas[i].factura == factura) facturaVenta = i;
+        if (facturaVenta !== -1) this.ventas.splice(facturaVenta, 1);
+        return facturaVenta !== -1;
+      };
+    
     // Agregacion de el Precio dentro del array para poderse aplicar el segundo Requisito y salidas
     agregarMontoPedido() {
         let montoPedido = 0 ;
@@ -31,7 +34,17 @@ export default class Cl_tienda {
             montoPedido = venta.costo * (1 + this.porcIncremento / 100);}
 //      return this.ventas.filter((venta) => venta.montoPedido() == montoPedido);
         return this.ventas.push(montoPedido);
-}
+    }
+
+
+        // Primer Requisito
+    montoTotal() {
+        let montoTotal = 0;
+        for (let i = 0; i < this.ventas.length; i++) {
+            montoTotal += this.ventas[i].montoPedido;}
+        return montoTotal;
+    }
+
         // Segundo Requisito
     montoMayor() {
         let mayor = 0;
@@ -44,6 +57,7 @@ export default class Cl_tienda {
         let mayor = this.montoMayor();
         return this.ventas.filter((venta) => venta.montoPedido == mayor);
         }
+
 
         // Tercer Requisito
     llevaronSoloUno() {
