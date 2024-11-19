@@ -80,7 +80,6 @@ let quienesllevaronSoloUno = (tienda) => {
 //Creación de las Salidas
 let salida= document.getElementById("salida");
 
-salida.innerHTML = "HOOOOOOLA YO SOY GLAAAADY";
+salida.innerHTML = "Holaa";
 salida.innerHTML = `<br>Aqui tiene<br>`;
 salida.innerHTML = `<br>Aqui tiene ${ventas.costo}$<br>`;
-salida.innerHTML = `<br>ME QUIERO MORIRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR$<br>`;
