@@ -22,10 +22,4 @@ export default class Cl_venta {
     get cnArticulos() {
         return this._cnArticulos;}
 
-        // Metodos Cl_venta
-pedido() {
-    return this.costo * this.cnArticulos;
-}
-
-
 }
