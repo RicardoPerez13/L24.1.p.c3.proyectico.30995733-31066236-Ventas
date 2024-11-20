@@ -23,8 +23,8 @@ Estructuras de datos recomendadas
 import Cl_venta from "./Cl_venta.js";
 import Cl_tienda from "./Cl_tienda.js";
 //Clases de datos
-import Dt_ventas from "./Dt/Dt_ventas.js";
-import Dt_tienda from "./Dt/Dt_tienda.js";
+import Dt_ventas from "./Dt_ventas.js";
+import Dt_tienda from "./Dt_tienda.js";
 //"""OJO""" Agregación de los datos del objeto Dt_tienda a tienda como parámetros
 const tienda = new Cl_tienda(Dt_tienda.montoCaja, Dt_tienda.porcIncremento);
 //Declaracion para los objetos de Venta
@@ -63,7 +63,7 @@ let modificarVenta = (tienda, salida) => {
     salida.innerHTML = alert("Los datos fueron modificados, Seleccione listar ventas para ver los cambios");
 }
 
-// Metodos para mostrar
+// Metodos de Requerimentos
 let montoTotal = (tienda, salida2) => {
     let montoTotal = tienda.montoTotal()
     salida2.innerHTML = `Monto Total: ${montoTotal}`
@@ -141,7 +141,7 @@ let opciones = document.getElementById("opciones");
         montoTotal(tienda, salida2); 
         break;
       default:
-        alert("Seleccione una opcion correcta");
+        alert("Seleccione una opción correcta");
         break;
     }
   }
