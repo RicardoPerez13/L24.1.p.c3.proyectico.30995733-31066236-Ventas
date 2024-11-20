@@ -27,23 +27,17 @@ export default class Cl_tienda {
         return facturaVenta !== -1;
       };
 
-
-    /*
-    // Agregacion de el Precio dentro del array para poderse aplicar el segundo Requisito y salidas
-    agregarMontoPedido() {
-        let montoPedido = 0 ;
-        for (let i = 0; i < this.ventas.length; i++) {
-            montoPedido = venta.costo * (1 + this.porcIncremento / 100);}
-//      return this.ventas.filter((venta) => venta.montoPedido() == montoPedido);
-        return this.ventas.push(montoPedido);
-    }
-*/
+      mostrarMontoCaja() {
+        return this.montoCaja;
+      };
 
         // Primer Requisito
     montoTotal() {
+        let acumTotal = 0;
         let montoTotal = 0;
         for (let i = 0; i < this.ventas.length; i++) {
-            montoTotal += this.ventas[i].montoPedido;}
+            acumTotal += this.ventas[i].montoPedido();
+            montoTotal=acumTotal+this.montoCaja}
         return montoTotal;
     }
 

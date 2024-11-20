@@ -49,7 +49,6 @@ let agregarVenta = (tienda) => {
     tienda.agregarVenta(venta);
     alert("Venta agregada");
   };
-
 let eliminarVenta = (tienda) => {
     let factura = Number(prompt("Ingrese la factura a eliminar:"));
     if (tienda.eliminarVenta(factura)) {
@@ -61,6 +60,10 @@ let eliminarVenta = (tienda) => {
   };
 
 // Demás metodos para mostrar
+let montoTotal = (tienda) => {
+    let montoTotal = tienda.montoTotal()
+    salida.innerHTML = `Monto Total: ${montoTotal}`
+}
 
 let quienesMontoMayor = (tienda) => {
     let ventas = tienda.quienesMontoMayor()
@@ -76,13 +79,36 @@ let quienesllevaronSoloUno = (tienda) => {
     salida.innerHTML += `<br>Nombre: ${venta.cliente}; Factura: ${venta.factura}; Articulos: ${venta.cnArticulos}`;
   });
 }
+//      *******Listar Ventas *********
+let listarVentas = (tienda) => {
+    let ventas = tienda.ventas;
+    let salidaTmp = `
+    <br><table>
+        <tr>
+            <th>Cliente</th>
+            <th>Factura</th>
+            <th>Costo</th>
+            <th>Articulos</th>
+            <th>Monto Pedido</th>
+        </tr>`;
+    ventas.forEach(venta => {
+        salidaTmp += `
+        <tr>
+            <td>${venta.cliente}</td>
+            <td>${venta.factura}</td>
+            <td>${venta.costo}</td>
+            <td>${venta.cnArticulos}</td>
+        </tr>`
+    });
+    salidaTmp += '</table>';
+    salida.innerHTML = salidaTmp;
+}
 
 //Creación de las Salidas
 let salida= document.getElementById("salida");
 //Boton
 let opciones = document.getElementById("opciones");
-
-
+// Switch del boton
   opciones.onclick = () => {
     let opcion = Number(prompt("Seleccione una opcion:"));
     switch (opcion) {
@@ -97,6 +123,15 @@ let opciones = document.getElementById("opciones");
         break;
       case 4:
         quienesllevaronSoloUno(tienda);
+        break;
+      case 5:
+        montoTotal(tienda);
+        break;
+      case 6:
+        listarVentas(tienda);
+        break;
+      default:
+        alert("Opcion no valida");
         break;
     }
   }
