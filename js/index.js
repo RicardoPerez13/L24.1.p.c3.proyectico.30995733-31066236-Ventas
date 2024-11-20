@@ -18,22 +18,23 @@ Estructuras de datos recomendadas
 * Info de factura dada
 * Monto ingresado de facturas con 2 artículos*/
 
-//     Aclaraciones, NO confundar venta con ventas
-//venta es la clase que toma los datos del array de ventas
+  //     Aclaraciones, NO confundar venta con ventas
+  //venta es la clase que toma los datos del array de ventas
 import Cl_venta from "./Cl_venta.js";
 import Cl_tienda from "./Cl_tienda.js";
-//Clases de datos
+  //Clases de datos
 import Dt_ventas from "./Dt_ventas.js";
 import Dt_tienda from "./Dt_tienda.js";
-//"""OJO""" Agregación de los datos del objeto Dt_tienda a tienda como parámetros
+  //"""OJO""" Agregación de los datos del objeto Dt_tienda a tienda como parámetros
 const tienda = new Cl_tienda(Dt_tienda.montoCaja, Dt_tienda.porcIncremento);
-//Declaracion para los objetos de Venta
+  //Declaracion para los objetos de Venta
 Dt_ventas.forEach((venta) =>
     tienda.agregarVenta(
       new Cl_venta(venta.cliente, venta.factura, venta.costo, venta.cnArticulos, tienda.porcIncremento))    
   );
 
   //Metodos deAgregacion, Eliminacion y Modificación de las ventas
+  //todo metodo que haga algun cambio a la lista de array sale por salida
 let agregarVenta = (tienda) => {
     let cliente = prompt("Ingrese el Nombre del Cliente:");
     let factura = Number(prompt("Ingrese la factura:"));
@@ -63,25 +64,33 @@ let modificarVenta = (tienda, salida) => {
     salida.innerHTML = alert("Los datos fueron modificados, Seleccione listar ventas para ver los cambios");
 }
 
-// Metodos de Requerimentos
-let montoTotal = (tienda, salida2) => {
-    let montoTotal = tienda.montoTotal()
-    salida2.innerHTML = `Monto Total: ${montoTotal}`
+  // Metodos de Requerimentos, aquí se procesan despues del case
+  // Los metodos que no interactuan con la lista salen con salida2
+
+let mostrarInicial = (tienda, salida2) => {
+  let montoCaja = tienda.mostrarInicial()
+  salida2.innerHTML = `Monto Inicial en Caja: ${montoCaja} $`
 }
 
 let quienesMontoMayor = (tienda, salida2) => {
     let ventas = tienda.quienesMontoMayor()
     salida2.innerHTML = `Clientes que pagaron el monto mayor: `
     ventas.forEach((venta) => { 
-    salida2.innerHTML += `<br>Nombre: ${venta.cliente};----Factura: ${venta.factura};----Monto: ${venta.montoPedido()}`;
+    salida2.innerHTML += `<br>Nombre: ${venta.cliente};----Factura: ${venta.factura};----Monto: ${venta.montoPedido()} $`;
   });
 }
+
 let quienesllevaronSoloUno = (tienda, salida2) => {
     let ventas = tienda.quienesllevaronSoloUno()
     salida2.innerHTML = `Clientes que solo llevaron 1 articulo: `
     ventas.forEach((venta) => { 
     salida2.innerHTML += `<br>Nombre: ${venta.cliente};----Factura: ${venta.factura}`;
   });
+}
+
+let montoTotal = (tienda, salida2) => {
+  let montoTotal = tienda.montoTotal()
+  salida2.innerHTML = `Monto Total: ${montoTotal} $`
 }
 
 //      *******Listar Ventas *********
@@ -101,9 +110,9 @@ let listarVentas = (tienda) => {
         <tr>
             <td>${venta.cliente}</td>
             <td>${venta.factura}</td>
-            <td>${venta.costo}</td>
+            <td>${venta.costo} $</td>
             <td>${venta.cnArticulos}</td>
-            <td>${venta.montoPedido()}</td>
+            <td>${venta.montoPedido()} $</td>
         </tr>`
     });
     salidaTmp += '</table>';
@@ -115,7 +124,7 @@ let salida= document.getElementById("salida");
 let salida2= document.getElementById("salida2");
 //Boton
 let opciones = document.getElementById("opciones");
-// Switch del boton para la salida de los metodos
+// Switch del boton para la mandar a procesar el metodo que se escoja
   opciones.onclick = () => {
     let opcion = Number(prompt("Seleccione una opcion:"));
     switch (opcion) {
@@ -132,12 +141,15 @@ let opciones = document.getElementById("opciones");
         modificarVenta(tienda, salida);
         break;
       case 5:
-        quienesMontoMayor(tienda, salida2); 
+        mostrarInicial(tienda, salida2);
         break;
       case 6:
-        quienesllevaronSoloUno(tienda, salida2);
+        quienesMontoMayor(tienda, salida2); 
         break;
       case 7:
+        quienesllevaronSoloUno(tienda, salida2);
+        break;
+      case 8:
         montoTotal(tienda, salida2); 
         break;
       default:

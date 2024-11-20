@@ -3,6 +3,7 @@ export default class Cl_venta {
         this.cliente = cliente;
         this.factura = factura;
         this.costo = costo;
+        //Atributos importados de Cl_tienda
         this.cnArticulos = cnArticulos;
         this.porcIncremento = porcIncremento;
     }   //Setters y Getters

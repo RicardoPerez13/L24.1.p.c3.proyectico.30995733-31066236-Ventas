@@ -1,7 +1,8 @@
 export default class Cl_tienda {
     constructor(montoCaja, porcIncremento) {
-        //Atributos
+        //Inicializacion del Array Ventas
         this.ventas = [];
+        //Atributos
         this.montoCaja = montoCaja;
         this.porcIncremento = porcIncremento;
     }   // Setters y Getters
@@ -34,14 +35,10 @@ export default class Cl_tienda {
         }
     }
 //     *****************Metodos******************
-        // Monto Total
-    montoTotal() {
-        let acumTotal = 0;
-        let montoTotal = 0;
-        for (let i = 0; i < this.ventas.length; i++) {
-            acumTotal += this.ventas[i].montoPedido();
-            montoTotal=acumTotal+this.montoCaja}
-        return montoTotal;
+
+        // Monto Inicial
+    mostrarInicial(){
+        return this.montoCaja
     }
         // Monto Mayor, Por cada requisito a comparar se necesitan dos metodos uno que
         // haga el ciclo, y el segundo que lo compruebe para saber si hay más datos iguales
@@ -63,13 +60,21 @@ export default class Cl_tienda {
         let SoloUno=this.ventas;
         for (let i = 0; i < this.ventas.length; i++) 
             if (this.ventas[i].cnArticulos==uno)
-             //   SoloUno.push(this.ventas[i]);
-               SoloUno.push(thisventas[i]);
+               SoloUno.push(this.ventas[i]);
             return SoloUno;
     }
     quienesllevaronSoloUno() {
         let uno=1
         return this.ventas.filter((venta) => venta.cnArticulos==uno);
+    }
+        // Monto Total
+    montoTotal() {
+        let acumTotal = 0;
+        let montoTotal = 0;
+        for (let i = 0; i < this.ventas.length; i++) {
+            acumTotal += this.ventas[i].montoPedido();
+            montoTotal=acumTotal+this.montoCaja}
+        return montoTotal;
     }
 
 }
