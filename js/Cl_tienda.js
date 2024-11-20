@@ -1,23 +1,26 @@
 export default class Cl_tienda {
-    constructor(montoCaja, porcIncremento,) {
+    constructor(montoCaja, porcIncremento) {
         //Atributos
         this.ventas = [];
-        this.montoCaja = montoCaja
-        this.porcIncremento = porcIncremento  
+        this.montoCaja = montoCaja;
+        this.porcIncremento = porcIncremento;
     }   // Setters y Getters
     set montoCaja(montoCaja) {
-        this._montoCaja = +montoCaja;}
+        this._montoCaja = +montoCaja;
+    }
     get montoCaja() {
-        return this.montoCaja;}
+        return this._montoCaja;
+    }
     set porcIncremento(porcIncremento) {
-        this._porcIncremento = +porcIncremento;}
+        this._porcIncremento = +porcIncremento;
+    }
     get porcIncremento() {
-        return this.porcIncremento;}
-
+        return this._porcIncremento;
+    }
         // ***Metodos Agregar, Modificar y Eliminar Venta***
     agregarVenta(venta) {
         this.ventas.push(venta);
-    };
+    }
 
     eliminarVenta(factura) {
         let facturaVenta = -1;
@@ -25,7 +28,7 @@ export default class Cl_tienda {
           if (this.ventas[i].factura == factura) facturaVenta = i;
         if (facturaVenta !== -1) this.ventas.splice(facturaVenta, 1);
         return facturaVenta !== -1;
-    };
+    }
 
     modificarVenta(factura, nuevosDatos){
         const ventas = this.ventas.find((ventas) => ventas.factura == factura);
@@ -35,11 +38,10 @@ export default class Cl_tienda {
             ventas.costo = nuevosDatos.costo || ventas.costo;
             ventas.cnArticulos = nuevosDatos.cnArticulos || ventas.cnArticulos;
         }
-    };
+    }
 
 
 //     ********Metodos********
-
 
         // Primer Requisito
     montoTotal() {
@@ -53,10 +55,10 @@ export default class Cl_tienda {
 
         // Segundo Requisito
     montoMayor() {
-        let mayor = 0;
-        for (let i = 0; i < this.ventas.length; i++) {
-            if (this.ventas[i].montoPedido() > mayor) {
-                return this.ventas.filter((venta) => venta.montoPedido() == mayor);}}
+        let mayor = this.ventas[0].montoPedido();
+        for (let i = 0; i < this.ventas.length; i++) 
+            if (this.ventas[i].montoPedido() > mayor) 
+                mayor=this.ventas[i].montoPedido();
         return mayor;
     }
     quienesMontoMayor() {

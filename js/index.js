@@ -14,7 +14,6 @@ Estructuras de datos recomendadas
 * Clientes que pagaron el monto mayor
 * Clientes que sólo llevaron 1 artículo
 
-**Ejemplos de requisitos defensa**
 * Clientes con mayor cnArticulos
 * Info de factura dada
 * Monto ingresado de facturas con 2 artículos*/
@@ -31,7 +30,7 @@ const tienda = new Cl_tienda(Dt_tienda.montoCaja, Dt_tienda.porcIncremento);
 //Declaracion para los objetos de Venta
 Dt_ventas.forEach((venta) =>
     tienda.agregarVenta(
-      new Cl_venta(venta.cliente, venta.factura, venta.costo, venta.cnArticulos, venta.porcIncremento)
+      new Cl_venta(venta.cliente, venta.factura, venta.costo, venta.cnArticulos, tienda.porcIncremento)
     )    
   );
 
@@ -41,7 +40,7 @@ let agregarVenta = (tienda) => {
     let factura = Number(prompt("Ingrese la factura:"));
     let costo = Number(prompt("Ingrese el costo:"));
     let cnArticulos = Number(prompt("Ingrese la cantidad de artículos:"));
-    let venta = new Cl_venta(cliente, factura, costo, cnArticulos);
+    let venta = new Cl_venta(cliente, factura, costo, cnArticulos, tienda.porcIncremento);
     tienda.agregarVenta(venta);
     alert("Venta agregada, Seleccione listar ventas para ver los cambios");
   };
@@ -68,7 +67,7 @@ let modificarVenta = (tienda, salida) => {
 // Demás metodos para mostrar
 let montoTotal = (tienda) => {
     let montoTotal = tienda.montoTotal()
-    salida2.innerHTML = `Monto Total: ${montoTotal}`
+    salida.innerHTML = `Monto Total: ${montoTotal}`
 }
 
 let quienesMontoMayor = (tienda) => {
@@ -105,6 +104,7 @@ let listarVentas = (tienda) => {
             <td>${venta.factura}</td>
             <td>${venta.costo}</td>
             <td>${venta.cnArticulos}</td>
+            <td>${venta.montoPedido()}</td>
         </tr>`
     });
     salidaTmp += '</table>';
