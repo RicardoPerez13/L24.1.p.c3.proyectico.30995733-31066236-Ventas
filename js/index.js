@@ -56,7 +56,7 @@ let eliminarVenta = (tienda) => {
 let modificarVenta = (tienda, salida) => {
     let factura = prompt('Ingrese Factura de la venta a modificar:');   
     let nuevosDatos = {};
-    nuevosDatos.cliente = prompt('Ingrese el nuevo cliente:');
+    nuevosDatos.cliente = prompt('Ingrese el nombre del nuevo cliente:');
     nuevosDatos.factura = Number(prompt('Ingrese la nueva factura:'));
     nuevosDatos.costo = Number(prompt('Ingrese el nuevo costo:'));
     nuevosDatos.cnArticulos = Number(prompt('Ingrese la nueva cantidad de articulos:'));
