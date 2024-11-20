@@ -30,13 +30,12 @@ const tienda = new Cl_tienda(Dt_tienda.montoCaja, Dt_tienda.porcIncremento);
 //Declaracion para los objetos de Venta
 Dt_ventas.forEach((venta) =>
     tienda.agregarVenta(
-      new Cl_venta(venta.cliente, venta.factura, venta.costo, venta.cnArticulos, tienda.porcIncremento)
-    )    
+      new Cl_venta(venta.cliente, venta.factura, venta.costo, venta.cnArticulos, tienda.porcIncremento))    
   );
 
   //Metodos deAgregacion, Eliminacion y Modificación de las ventas
 let agregarVenta = (tienda) => {
-    let cliente = prompt("Ingrese el cliente:");
+    let cliente = prompt("Ingrese el Nombre del Cliente:");
     let factura = Number(prompt("Ingrese la factura:"));
     let costo = Number(prompt("Ingrese el costo:"));
     let cnArticulos = Number(prompt("Ingrese la cantidad de artículos:"));
@@ -64,24 +63,24 @@ let modificarVenta = (tienda, salida) => {
     salida.innerHTML = alert("Los datos fueron modificados, Seleccione listar ventas para ver los cambios");
 }
 
-// Demás metodos para mostrar
-let montoTotal = (tienda) => {
+// Metodos para mostrar
+let montoTotal = (tienda, salida2) => {
     let montoTotal = tienda.montoTotal()
-    salida.innerHTML = `Monto Total: ${montoTotal}`
+    salida2.innerHTML = `Monto Total: ${montoTotal}`
 }
 
-let quienesMontoMayor = (tienda) => {
+let quienesMontoMayor = (tienda, salida2) => {
     let ventas = tienda.quienesMontoMayor()
-    salida.innerHTML = `Clientes que pagaron el monto mayor: `
+    salida2.innerHTML = `Clientes que pagaron el monto mayor: `
     ventas.forEach((venta) => { 
-    salida.innerHTML += `<br>Nombre: ${venta.cliente}; Factura: ${venta.factura}; Monto: ${venta.montoPedido()}`;
+    salida2.innerHTML += `<br>Nombre: ${venta.cliente};----Factura: ${venta.factura};----Monto: ${venta.montoPedido()}`;
   });
 }
-let quienesllevaronSoloUno = (tienda) => {
+let quienesllevaronSoloUno = (tienda, salida2) => {
     let ventas = tienda.quienesllevaronSoloUno()
-    salida.innerHTML = `Clientes que solo llevaron 1 articulo: `
+    salida2.innerHTML = `Clientes que solo llevaron 1 articulo: `
     ventas.forEach((venta) => { 
-    salida.innerHTML += `<br>Nombre: ${venta.cliente}; Factura: ${venta.factura}; Articulos: ${venta.cnArticulos}`;
+    salida2.innerHTML += `<br>Nombre: ${venta.cliente};----Factura: ${venta.factura}`;
   });
 }
 
@@ -116,30 +115,30 @@ let salida= document.getElementById("salida");
 let salida2= document.getElementById("salida2");
 //Boton
 let opciones = document.getElementById("opciones");
-// Switch del boton
+// Switch del boton para la salida de los metodos
   opciones.onclick = () => {
     let opcion = Number(prompt("Seleccione una opcion:"));
     switch (opcion) {
       case 1:
-        listarVentas(tienda);
+        listarVentas(tienda, salida);
         break;
       case 2:
-        agregarVenta(tienda);
+        agregarVenta(tienda, salida);
         break;
       case 3:
-        eliminarVenta(tienda);
+        eliminarVenta(tienda, salida);
         break;
       case 4:
-        modificarVenta(tienda);
+        modificarVenta(tienda, salida);
         break;
       case 5:
-        quienesMontoMayor(tienda); 
+        quienesMontoMayor(tienda, salida2); 
         break;
       case 6:
-        quienesllevaronSoloUno(tienda);
+        quienesllevaronSoloUno(tienda, salida2);
         break;
       case 7:
-        montoTotal(tienda); 
+        montoTotal(tienda, salida2); 
         break;
       default:
         alert("Seleccione una opcion correcta");

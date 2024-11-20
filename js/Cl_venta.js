@@ -22,12 +22,13 @@ export default class Cl_venta {
         this._cnArticulos = +cnArticulos;}
     get cnArticulos() {
         return this._cnArticulos;}
+        //Setters y Getters de porcIncremento como parametros de Cl_tienda
     set porcIncremento(porcIncremento) {
         this._porcIncremento = +porcIncremento;}
     get porcIncremento() {
         return this._porcIncremento;}
         //Metodos
     montoPedido() {
-//        return this.costo * (1 + this.porcIncremento / 100);}
         return (this.costo*(this.porcIncremento/100))+this.costo;
-}}
+    }
+}

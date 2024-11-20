@@ -6,22 +6,17 @@ export default class Cl_tienda {
         this.porcIncremento = porcIncremento;
     }   // Setters y Getters
     set montoCaja(montoCaja) {
-        this._montoCaja = +montoCaja;
-    }
+        this._montoCaja = +montoCaja;}
     get montoCaja() {
-        return this._montoCaja;
-    }
+        return this._montoCaja;}
     set porcIncremento(porcIncremento) {
-        this._porcIncremento = +porcIncremento;
-    }
+        this._porcIncremento = +porcIncremento;}
     get porcIncremento() {
-        return this._porcIncremento;
-    }
+        return this._porcIncremento;}
         // ***Metodos Agregar, Modificar y Eliminar Venta***
     agregarVenta(venta) {
         this.ventas.push(venta);
     }
-
     eliminarVenta(factura) {
         let facturaVenta = -1;
         for (let i = 0; i < this.ventas.length; i++)
@@ -29,21 +24,17 @@ export default class Cl_tienda {
         if (facturaVenta !== -1) this.ventas.splice(facturaVenta, 1);
         return facturaVenta !== -1;
     }
-
     modificarVenta(factura, nuevosDatos){
         const ventas = this.ventas.find((ventas) => ventas.factura == factura);
         if(ventas){
-            ventas.cliente = nuevosDatos.cliente || ventas.nombre;
+            ventas.cliente = nuevosDatos.cliente || ventas.cliente;
             ventas.factura = nuevosDatos.factura || ventas.factura;
             ventas.costo = nuevosDatos.costo || ventas.costo;
             ventas.cnArticulos = nuevosDatos.cnArticulos || ventas.cnArticulos;
         }
     }
-
-
-//     ********Metodos********
-
-        // Primer Requisito
+//     *****************Metodos******************
+        // Monto Total
     montoTotal() {
         let acumTotal = 0;
         let montoTotal = 0;
@@ -52,8 +43,8 @@ export default class Cl_tienda {
             montoTotal=acumTotal+this.montoCaja}
         return montoTotal;
     }
-
-        // Segundo Requisito
+        // Monto Mayor, Por cada requisito a comparar se necesitan dos metodos uno que
+        // haga el ciclo, y el segundo que lo compruebe para saber si hay más datos iguales
     montoMayor() {
         let mayor = this.ventas[0].montoPedido();
         for (let i = 0; i < this.ventas.length; i++) 
@@ -66,22 +57,19 @@ export default class Cl_tienda {
         return this.ventas.filter((venta) => venta.montoPedido() == mayor);
         }
 
-        // Tercer Requisito
-    llevaronSoloUno() {
-        let uno=0
-        for (let i = 0; i < this.ventas.length; i++) {
-            if (this.ventas[i].cnArticulos == 1) {
-                return this.ventas.filter((venta) => venta.cnArticulos == uno);}}
-        return uno;
+        // Los que llevaron solo Un Articulo
+    llevaronSoloUno(){
+        let uno=1
+        let SoloUno=this.ventas;
+        for (let i = 0; i < this.ventas.length; i++) 
+            if (this.ventas[i].cnArticulos==uno)
+             //   SoloUno.push(this.ventas[i]);
+               SoloUno.push(thisventas[i]);
+            return SoloUno;
     }
     quienesllevaronSoloUno() {
-        let uno = this.llevaronSoloUno()
-        return this.ventas.filter((venta) => venta.cnArticulos == uno);
-}
-
-
-
-
-
+        let uno=1
+        return this.ventas.filter((venta) => venta.cnArticulos==uno);
+    }
 
 }

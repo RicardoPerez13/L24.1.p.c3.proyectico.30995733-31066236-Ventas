@@ -17,10 +17,19 @@ const Dt_ventas = [
     costo: 200,
     cnArticulos: 10
     },
+    {
+    cliente:'Juana' ,
+    factura: 8888,
+    costo: 120,
+    cnArticulos: 1
+    }
     ]
     export default Dt_ventas;
 
-//el codigo deberia correr con este
+//el codigo en el anexo es el siguiente, pero no funciona, 
+//debido a que no esta declarada la variablede forma correcta
+//la forma correcta seria la de arriba
+
 /*export default Dt_ventas = [
     {
     cliente: 'Luis',
