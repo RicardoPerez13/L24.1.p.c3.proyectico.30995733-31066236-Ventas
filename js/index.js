@@ -35,7 +35,7 @@ const tienda = new Cl_tienda(Dt_tienda.montoCaja, Dt_tienda.porcIncremento);
 //Declaracion para los objetos de Venta
 Dt_ventas.forEach((venta) =>
     tienda.agregarVenta(
-      new Cl_venta(venta.cliente, venta.factura, venta.costo, venta.cnArticulos)
+      new Cl_venta(venta.cliente, venta.factura, venta.costo, venta.cnArticulos, venta.porcIncremento)
     )    
   );
 
@@ -63,10 +63,10 @@ let eliminarVenta = (tienda) => {
 // Demás metodos para mostrar
 
 let quienesMontoMayor = (tienda) => {
-    let ventas = tienda.montoMayor()
+    let ventas = tienda.quienesMontoMayor()
     salida.innerHTML = `Clientes que pagaron el monto mayor: `
     ventas.forEach((venta) => { 
-    salida.innerHTML += `<br>Nombre: ${venta.cliente}; Factura: ${venta.factura}; Monto: ${venta.montoPedido}`;
+    salida.innerHTML += `<br>Nombre: ${venta.cliente}; Factura: ${venta.factura}; Monto: ${venta.montoPedido()}`;
   });
 }
 let quienesllevaronSoloUno = (tienda) => {
@@ -79,7 +79,24 @@ let quienesllevaronSoloUno = (tienda) => {
 
 //Creación de las Salidas
 let salida= document.getElementById("salida");
+//Boton
+let opciones = document.getElementById("opciones");
 
-salida.innerHTML = "Holaa";
-salida.innerHTML = `<br>Aqui tiene<br>`;
-salida.innerHTML = `<br>Aqui tiene ${ventas.costo}$<br>`;
+
+  opciones.onclick = () => {
+    let opcion = Number(prompt("Seleccione una opcion:"));
+    switch (opcion) {
+      case 1:
+        agregarVenta(tienda);
+        break;
+      case 2:
+        eliminarVenta(tienda);
+        break;
+      case 3:
+        quienesMontoMayor(tienda);
+        break;
+      case 4:
+        quienesllevaronSoloUno(tienda);
+        break;
+    }
+  }

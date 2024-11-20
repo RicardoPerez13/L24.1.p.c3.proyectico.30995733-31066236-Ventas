@@ -1,9 +1,10 @@
 export default class Cl_venta {
-    constructor(cliente, factura, costo, cnArticulos) {
+    constructor(cliente, factura, costo, cnArticulos, porcIncremento) {
         this.cliente = cliente;
         this.factura = factura;
         this.costo = costo;
         this.cnArticulos = cnArticulos;
+        this.porcIncremento = porcIncremento;
     }   //Setters y Getters
     set cliente(cliente) {
         this._cliente = cliente;}
@@ -21,5 +22,8 @@ export default class Cl_venta {
         this._cnArticulos = +cnArticulos;}
     get cnArticulos() {
         return this._cnArticulos;}
+        //Metodos
+    montopedido() {
+        return this.costo * (1 + this.porcIncremento / 100);}
 
 }

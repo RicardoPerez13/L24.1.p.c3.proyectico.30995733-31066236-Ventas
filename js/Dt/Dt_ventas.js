@@ -1,26 +1,4 @@
-export default Dt_ventas = [
-    {
-    cliente: 'Luis',
-    factura: 1111,
-    costo: 100,
-    cnArticulos: 3
-    },
-    {
-    cliente: 'Carla',
-    factura: 2222,
-    costo: 50,
-    cnArticulos: 4
-    },
-    {
-    cliente: 'Mery',
-    factura: 3333,
-    costo: 200,
-    cnArticulos: 10
-    },
-    ]
-//no se porque el codigo solo corre asi
-    /*
-    const Dt_ventas = [
+const Dt_ventas = [
     {
     cliente: 'Luis',
     factura: 1111,
@@ -41,4 +19,29 @@ export default Dt_ventas = [
     },
     ]
     export default Dt_ventas;
-    */ 
+
+//el codigo deberia correr con este
+/*export default Dt_ventas = [
+    {
+    cliente: 'Luis',
+    factura: 1111,
+    costo: 100,
+    cnArticulos: 3
+    },
+    {
+    cliente: 'Carla',
+    factura: 2222,
+    costo: 50,
+    cnArticulos: 4
+    },
+    {
+    cliente: 'Mery',
+    factura: 3333,
+    costo: 200,
+    cnArticulos: 10
+    },
+    ]*/
+
+    
+
+    

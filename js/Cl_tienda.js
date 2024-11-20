@@ -14,7 +14,7 @@ export default class Cl_tienda {
     get porcIncremento() {
         return this.porcIncremento;}
         // ***Metodos Cl_tienda***
-
+        
     agregarVenta(venta) {
         this.ventas.push(venta);
     };
@@ -26,7 +26,9 @@ export default class Cl_tienda {
         if (facturaVenta !== -1) this.ventas.splice(facturaVenta, 1);
         return facturaVenta !== -1;
       };
-    
+
+
+    /*
     // Agregacion de el Precio dentro del array para poderse aplicar el segundo Requisito y salidas
     agregarMontoPedido() {
         let montoPedido = 0 ;
@@ -35,7 +37,7 @@ export default class Cl_tienda {
 //      return this.ventas.filter((venta) => venta.montoPedido() == montoPedido);
         return this.ventas.push(montoPedido);
     }
-
+*/
 
         // Primer Requisito
     montoTotal() {
@@ -49,15 +51,14 @@ export default class Cl_tienda {
     montoMayor() {
         let mayor = 0;
         for (let i = 0; i < this.ventas.length; i++) {
-            if (this.ventas[i].montoPedido > mayor) {
-                return this.ventas.filter((venta) => venta.montoPedido == mayor);}}
+            if (this.ventas[i].montoPedido() > mayor) {
+                return this.ventas.filter((venta) => venta.montoPedido() == mayor);}}
         return mayor;
     }
     quienesMontoMayor() {
         let mayor = this.montoMayor();
-        return this.ventas.filter((venta) => venta.montoPedido == mayor);
+        return this.ventas.filter((venta) => venta.montoPedido() == mayor);
         }
-
 
         // Tercer Requisito
     llevaronSoloUno() {
