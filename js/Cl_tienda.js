@@ -13,8 +13,8 @@ export default class Cl_tienda {
         this._porcIncremento = +porcIncremento;}
     get porcIncremento() {
         return this.porcIncremento;}
-        // ***Metodos Cl_tienda***
-        
+
+        // ***Metodos Agregar, Modificar y Eliminar Venta***
     agregarVenta(venta) {
         this.ventas.push(venta);
     };
@@ -25,11 +25,21 @@ export default class Cl_tienda {
           if (this.ventas[i].factura == factura) facturaVenta = i;
         if (facturaVenta !== -1) this.ventas.splice(facturaVenta, 1);
         return facturaVenta !== -1;
-      };
+    };
 
-      mostrarMontoCaja() {
-        return this.montoCaja;
-      };
+    modificarVenta(factura, nuevosDatos){
+        const ventas = this.ventas.find((ventas) => ventas.factura == factura);
+        if(ventas){
+            ventas.cliente = nuevosDatos.cliente || ventas.nombre;
+            ventas.factura = nuevosDatos.factura || ventas.factura;
+            ventas.costo = nuevosDatos.costo || ventas.costo;
+            ventas.cnArticulos = nuevosDatos.cnArticulos || ventas.cnArticulos;
+        }
+    };
+
+
+//     ********Metodos********
+
 
         // Primer Requisito
     montoTotal() {
