@@ -88,23 +88,24 @@ let quienesllevaronSoloUno = (tienda, salida2) => {
   });
 }
 
+let quienesMayorCantidad = (tienda, salida2) => {
+  let ventas = tienda.quienesMayorCantidad()
+  salida2.innerHTML = `Clientes con mayor cantidad de articulos: `
+  ventas.forEach((venta) => { 
+  salida2.innerHTML += `<br>Nombre: ${venta.cliente};----Factura: ${venta.factura};----Cantidad: ${venta.cnArticulos}`;
+});
+}
+
+let montoIngresado = (tienda, salida2) => {
+let montoIngresado = tienda.montoIngresado()
+salida2.innerHTML = `Monto Ingresado: ${montoIngresado} $`
+}
+
 let montoTotal = (tienda, salida2) => {
   let montoTotal = tienda.montoTotal()
   salida2.innerHTML = `Monto Total: ${montoTotal} $`
 }
 
-let quienesMayorCantidad = (tienda, salida2) => {
-    let ventas = tienda.quienesMayorCantidad()
-    salida2.innerHTML = `Clientes con mayor cantidad de articulos: `
-    ventas.forEach((venta) => { 
-    salida2.innerHTML += `<br>Nombre: ${venta.cliente};----Factura: ${venta.factura};----Cantidad: ${venta.cnArticulos}`;
-  });
-}
-
-let montoIngresado = (tienda, salida2) => {
-  let montoIngresado = tienda.montoIngresado()
-  salida2.innerHTML = `Monto Ingresado: ${montoIngresado} $`
-}
 
 //      *******Listar Ventas *********
 let listarVentas = (tienda) => {
@@ -136,7 +137,7 @@ let listarVentas = (tienda) => {
 let salida= document.getElementById("salida");
 let salida2= document.getElementById("salida2");
 //Boton
-let opciones = document.getElementById("Opciones");
+let opciones = document.getElementById("opciones");
 // Switch del boton para la mandar a procesar el metodo que se escoja
   opciones.onclick = () => {
     let opcion = Number(prompt("Seleccione una opcion:"));
