@@ -93,6 +93,19 @@ let montoTotal = (tienda, salida2) => {
   salida2.innerHTML = `Monto Total: ${montoTotal} $`
 }
 
+let quienesMayorCantidad = (tienda, salida2) => {
+    let ventas = tienda.quienesMayorCantidad()
+    salida2.innerHTML = `Clientes con mayor cantidad de articulos: `
+    ventas.forEach((venta) => { 
+    salida2.innerHTML += `<br>Nombre: ${venta.cliente};----Factura: ${venta.factura};----Cantidad: ${venta.cnArticulos}`;
+  });
+}
+
+let montoIngresado = (tienda, salida2) => {
+  let montoIngresado = tienda.montoIngresado()
+  salida2.innerHTML = `Monto Ingresado: ${montoIngresado} $`
+}
+
 //      *******Listar Ventas *********
 let listarVentas = (tienda) => {
     let ventas = tienda.ventas;
@@ -150,7 +163,13 @@ let opciones = document.getElementById("opciones");
         quienesllevaronSoloUno(tienda, salida2);
         break;
       case 8:
-        montoTotal(tienda, salida2); 
+        quienesMayorCantidad(tienda, salida2);
+        break;
+      case 9:
+        montoIngresado(tienda, salida2);
+        break;
+      case 10:
+        montoTotal(tienda, salida2);
         break;
       default:
         alert("Seleccione una opción correcta");
