@@ -136,7 +136,7 @@ let listarVentas = (tienda) => {
 let salida= document.getElementById("salida");
 let salida2= document.getElementById("salida2");
 //Boton
-let opciones = document.getElementById("opciones");
+let opciones = document.getElementById("Opciones");
 // Switch del boton para la mandar a procesar el metodo que se escoja
   opciones.onclick = () => {
     let opcion = Number(prompt("Seleccione una opcion:"));
